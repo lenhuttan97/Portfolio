@@ -23,6 +23,41 @@ boxs.forEach(box => {
         glare: true,
     })
 });
+function getData(form) {
+    var formData = new FormData(form);
+  
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ": " + pair[1]);
+    }
+  
+    console.log(Object.fromEntries(formData));
+  }
+
+  
+  document.getElementById("myForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let form = new FormData(e.target);
+    let formData = Object.fromEntries(form);
+    sendEmail(formData)
+
+});
+function sendEmail(formData) {
+    console.log(formData);
+    var message = "Name: " + formData.FistName + " " + formData.LastName + "<br/>";
+    message += "Email: " + formData.email + "<br/>";
+    message += "Phone: " + formData.phone + "<br/>";
+    message += "Message:" + formData.message + "<br/>";
+    Email.send({
+        SecureToken : "99478b4d-7cf1-4139-b181-91d4769a1b29",
+        To : "tan.lenhut97@gmail.com" ,
+        From : "tan.lenhut97@gmail.com",
+        Subject : "New Contacts",
+        Body : message
+    }).then(
+      mess => alert(mess)
+    );
+}  
 
 
 
