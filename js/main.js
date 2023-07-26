@@ -57,7 +57,7 @@ function sendEmail(formData) {
         Subject: "New Contacts",
         Body: message
     }).then(
-        mess => alert(mess)
+        mess => alert('I have received your message, I will contact you soon')
     );
 }
 
@@ -130,9 +130,9 @@ function setAnimationService() {
         if(top < offset || top > (offset + height)){
        
                 removeAnimateCSS(services, '.caption', 'fadeInUp');
-                removeAnimateCSS(box[0], '', 'lightSpeedInLeft');
+                removeAnimateCSS(box[0], '', 'zoomIn');
                 removeAnimateCSS(box[1], '', 'zoomIn');
-                removeAnimateCSS(box[2], '', 'lightSpeedInRight');
+                removeAnimateCSS(box[2], '', 'zoomIn');
                 removeAnimateCSS(skill, '.caption', 'fadeInUp');
                 img.forEach(element => {
                     removeAnimateCSS(element, '', 'zoomInDown');
@@ -145,9 +145,9 @@ function setAnimationService() {
         }
         if(top >= offset && top < (offset + height)){
             addAnimateCSS(services, '.caption', 'fadeInUp');
-            addAnimateCSS(box[0], '', 'lightSpeedInLeft');
+            addAnimateCSS(box[0], '', 'zoomIn');
             addAnimateCSS(box[1], '', 'zoomIn');
-            addAnimateCSS(box[2], '', 'lightSpeedInRight');
+            addAnimateCSS(box[2], '', 'zoomIn');
         } 
 
         if(top >= skill.offsetTop && top < (offset + height)){

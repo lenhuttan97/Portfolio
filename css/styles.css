@@ -481,6 +481,7 @@ section {
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
+    margin-top: 50px;
 }
 
 .skill .caption {
@@ -720,8 +721,10 @@ section {
 .project{
     display: flex;
     position: relative;
-    margin-bottom: 50px;
-
+    margin-bottom: 100px;
+    width: 100%;
+    height: 500px;
+    transition: all 500ms linear;
 }
 
 .project span{
@@ -776,9 +779,16 @@ section {
     height: 100%;
 }
 
-.project.revert{
-    flex-direction: row-reverse;
-   
+.project.revert {
+    flex-direction: row-reverse; 
+}
+
+.project.revert .content{
+   transform: translateX(10px);
+}
+
+.project.revert:hover .name{
+   margin: 10px 10px 10px 0px;
 }
 
 .column{
@@ -795,14 +805,23 @@ section {
     text-transform: capitalize;
     line-height: 100px;
     letter-spacing: 1.5px;
+    position: relative;
 }
 
-.project .name h2{
-    font-size: 50px;
-    font-weight: 600;
-    text-transform: capitalize;
-    line-height: 100px;
-    letter-spacing: 1.5px;
+.project .name h2::before{
+    content: '';
+ position: absolute;
+ width: 0%;
+ height: 2px;
+ border-radius: 2px;
+ background-color: var(--blue1);
+ bottom: 0;
+ left: 5%;
+ transition: width 0.5s linear ;
+}
+
+.project .name h2:hover:before{
+ width: 50%;
 }
 
 .project .name p{
@@ -813,16 +832,105 @@ section {
     padding: 20px;
     backdrop-filter: blur(10px);
     border: 1px solid var(--blue3);
+    margin-bottom: 20px;
+    min-height: 150px;
 }
+
+.project .name.technology{
+    width: 50%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project .name .technology .icon-item{
+    width: 30px;
+    height: 30px;
+}
+
+.project .name .footer{
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.project .name .footer a{
+    width: 40%;
+    height: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    border-bottom: 1px solid var(--active);
+    /* border-top: 1px solid var(--active);
+    border-: 1px solid var(--active);
+    border-bottom: 1px solid var(--active); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--shadow);
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.project .name .footer a::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+  transition: all 500ms linear;
+  border-radius: 50%;
+}
+.project .name .footer a:hover{
+    color: var(--blue3);
+}
+.project .name .footer a:hover:before{
+    background-color: var(--active);
+    transform: translate(-50%, -50%) scale(30);
+    z-index: -1;
+}
+
+
 .project .content{
     flex: 1;
+    transform: translateX(-10px);
+    transition: all 250ms linear;
 }
 
 .project .content img{
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
     object-fit: contain;
+    box-shadow: 0px 0px 20px 1px var(--shadow);
+    border-radius: 10px;
+    transition: all 250ms linear;
 }
+
+.project:hover .content{
+    transform: translateX(10px);
+}
+.project:hover .content img{
+    width: 90%;
+    height: 90%;
+    box-shadow: none;
+}
+
+
+.project:hover .name{
+    box-shadow: 0px 0px 20px 1px var(--shadow);
+    margin: 10px 0px 10px 10px;
+    border-radius: 10px;
+    z-index: 9;
+}
+
 
 .caption{
     text-align: center;
@@ -862,7 +970,7 @@ section {
     align-items: center;
     column-gap: 10%;
     width: 85%;
-    margin: 80px 0;
+    margin: 0px 0px 80px 0px;
 }
 
 .contact .item{
